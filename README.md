@@ -34,7 +34,8 @@ $ unzip Name_of_project_folder/data/bowtie2_mm10_index/mm10.zip -d Name_of_proje
 
 Run below command from the CNR_pipeline directory. 
 ```
-$ perl process_CNR.pl \
+$ git clone https://github.com/gyanmishra/CNR_pipeline.git
+$ perl CNR_pipeline/process_CNR.pl \
 <result dir> \ # the path of result directory
 <raw file directory> \ # the path of directory containing raw files
 <bowtie2_index directory> \ # the path of directory containing bowtie2 index
@@ -43,12 +44,14 @@ $ perl process_CNR.pl \
 e.g.
 
 ```
-$ perl process_CNR.pl \
+$ perl CNR_pipeline/process_CNR.pl \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/results/240531/ \
 /project/OBI/Neuroinformatics_Core/Stroud_lab/shared/D3aCNR_forGyan/ \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/data/bowtie2_mm10_index/ \ \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/data/sampleSheet.csv 
 ```
+
+*Note : The script `process_CNR.pl` can be run from any directory* <br >
 **5. Generate Qualimap report in tabular format for all the samples**
 Run below command from the CNR_pipeline directory. 
 
@@ -96,7 +99,7 @@ MECP2_vs_IgG	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP
 **2. Run the peak calling script**
 Run below command from the CNR_pipeline directory. 
 ```
-$ perl macs2_callPeak.pl \
+$ perl CNR_pipeline/macs2_callPeak.pl \
 <result directory> \ # the path of result directory
 <pvalue or qvalue> \ # pvalue - to find peaks with p-value cut-off of 1e-3; qvalue - to find peaks with qvalue cut-off of 0.05
 <macs2_sampleSheet.tsv> # path with name of macs2_sampleSheet.tsv
@@ -104,12 +107,13 @@ $ perl macs2_callPeak.pl \
 
 e.g
 ```
-$ perl macs2_callPeak.pl \
+$ perl CNR_pipeline/macs2_callPeak.pl \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/results/240531/ \
 pvalue \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/data/macs2_sampleSheet.tsv \
 
 ```
+*Note : The script `macs2_callPeak.pl` can be run from any directory* <br >
 
 **Details of macs2 output directory :**
 
