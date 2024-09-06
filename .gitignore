@@ -1,6 +1,5 @@
-macs2_callPeak.sh
+Mus_musculus.GRCm38.102.gtf.gz
+Mus_musculus.GRCm38.102.protein_coding_gene.bed
 test
-test.pl
 test_run
-test.tsv
 .gitignore 
