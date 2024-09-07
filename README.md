@@ -1,11 +1,13 @@
 This pipeline process paired-end raw CUT&RUN/ChIP sequening reads from mouse to generate BAM, bedGraph and bigwig files. After processing the reads, it also includes script to perform peak calling using macs2.
 
 This pipleine is tested to work in UTSW BioHPC
+\
 This pipleine has 2 major component : 
 
 ## Processing of Raw reads
 
-Processing and alignment of raw data are in the order** 
+Processing and alignment of raw data are in the order
+ 
 [FASTQC(v0.11.8) >> multiqc(v1.7) >> Trimmomatic(v0.32) >> multiqc((v1.7)) >>bowtie2(v2.4.2) >> samtools(v1.6) (sort, fixmate, markdup) >> bamCoverage (deeptools(v3.5.0))]
 
 
@@ -62,7 +64,7 @@ $ perl CNR_pipeline/process_CNR.pl \
 e.g.
 
 ```
-Sequencing RUN ID : 2024_06_11_N2K226_13907_0
+e.g Sequencing Run id is "2024_06_11_N2K226_13907_0"
 $ perl CNR_pipeline/process_CNR.pl \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
 /project/OBI/Neuroinformatics_Core/Stroud_lab/shared/D3aCNR_forGyan/ \
@@ -70,7 +72,7 @@ $ perl CNR_pipeline/process_CNR.pl \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/sampleSheet.csv 
 ```
 
-*Note : The script `process_CNR.pl` can be run from any directory*
+*Note : The script `process_CNR.pl` can be run from any directory given the full path of `CNR_Pipeline` directory*
 
 **V. Generate Alignment statisitcs in tabular format for all the samples**
 Run below command from the CNR_pipeline directory. 
@@ -137,7 +139,7 @@ pvalue \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/data/macs2_sampleSheet.tsv \
 
 ```
-*Note : The script `macs2_callPeak.pl` can be run from any directory* <br >
+*Note : The script `macs2_callPeak.pl` can be run from any directory given the full path of `CNR_Pipeline` directory** <br >
 
 **Details of macs2 output directory :**
 
