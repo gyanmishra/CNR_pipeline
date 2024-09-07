@@ -40,14 +40,14 @@ SampleID,Read1.fastq.gz,Read2.fastq.gz
 7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729_TC240531_A1,TC240531_A1_S1_R1_001.fastq.gz,TC240531_A1_S1_R2_001.fastq.gz
 7wk_MECP2_WT_LR_CTX_H3K4me1_ab8895_TC240531_A2,TC240531_A2_S2_R1_001.fastq.gz,TC240531_A2_S2_R2_001.fastq.gz
 ```
-save the sampleSheet.csv in `Name_of_project_folder/data/`
+save the sampleSheet.csv in `MECP2_project/data/`
 
 **III. Download the mm10 bowtie2 index**\
 *Note: skip this step if you already have the reuqired index files of the genome*
 ```
-$ mkdir -p Name_of_project_folder/data/bowtie2_mm10_index
-$ wget https://genome-idx.s3.amazonaws.com/bt/mm10.zip -P Name_of_project_folder/data/bowtie2_mm10_index
-$ unzip Name_of_project_folder/data/bowtie2_mm10_index/mm10.zip -d Name_of_project_folder/data/bowtie2_mm10_index/
+$ mkdir -p MECP2_project/data/bowtie2_mm10_index
+$ wget https://genome-idx.s3.amazonaws.com/bt/mm10.zip -P MECP2_project/data/bowtie2_mm10_index
+$ unzip MECP2_project/data/bowtie2_mm10_index/mm10.zip -d MECP2_project/data/bowtie2_mm10_index/
 ```
 
 **IV. Run the pipeline with following argument as inputs**
@@ -86,12 +86,12 @@ $ sbatch Generate_Alignment_stats.sh \
 e.g
 ```
 sbatch CNR_pipeline/Generate_Alignment_stats.sh \
-/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/results/2024_06_11_N2K226_13907_0/ \
+/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
 /project/OBI/Neuroinformatics_Core/Stroud_lab/shared/D3aCNR_forGyan/ \
-/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/data/sampleSheet.csv 
+/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/sampleSheet.csv 
 ```
 open below file to to see the alignment statistics
-`/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/results/2024_06_11_N2K226_13907_0/stats/Alignment_stats.tsv` 
+`/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/stats/Alignment_stats.tsv` 
 
 **Details of output folder :**
 1. `MECP2_project/results/2024_06_11_N2K226_13907_0/bam`
@@ -120,7 +120,7 @@ The targetID and controlID should be smapleID used in the sampleSheet.csv file.
 peakCallingID	targetID	controlID
 MECP2_vs_IgG	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729
 ```
-*save the file in `Name_of_project_folder/data/macs2_sampleSheet.tsv`
+*save the file in `MECP2_project/data/macs2_sampleSheet.tsv`
 
 **2. Run the peak calling script**
 Run below command from the CNR_pipeline directory. 
@@ -136,7 +136,7 @@ e.g
 $ perl CNR_pipeline/macs2_callPeak.pl \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
 pvalue \
-/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/Name_of_project_folder/data/macs2_sampleSheet.tsv \
+/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/macs2_sampleSheet.tsv \
 
 ```
 *Note : The script `macs2_callPeak.pl` can be run from any directory given the full path of `CNR_Pipeline` directory** <br >
