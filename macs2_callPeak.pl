@@ -93,8 +93,8 @@ foreach $line (<$file>)
             if($pvalue eq 'pvalue'){
                 print FH "macs2 callpeak \\\n-t @targets \\\n-c @controls \\\n-f BAMPE \\\n-g mm \\\n-p 1e-3 \\\n--outdir $outputDir/macs2_callPeak/$sampleName \\\n--call-summits \\\n-n $sampleName\n\n";
                 print FH "#remove blacklisted region\n";
-                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak \\\nmm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed\n\n";
-                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_summits.bed \\\nmm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_summits_noBlacklist.bed\n";
+                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed\n\n";
+                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_summits.bed \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_summits_noBlacklist.bed\n";
             }
 
             if($pvalue eq 'qvalue'){
