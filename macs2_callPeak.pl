@@ -29,6 +29,9 @@ unless (-e "$outputDir/logs") {
 # 2nd column : targetFiles 
 # 3rd column : controlFiles
 
+$datestring = strftime "%F", localtime;
+$datestring =~ s/-//g ;
+
 $sampleData  = $ARGV[2];
 open my $file, $sampleData or die "Could not open $sampleData: $!";
 
@@ -68,7 +71,7 @@ foreach $line (<$file>)
             $sampleName = $col[0];
             print "$sampleName\n";
             #$sampleName =~ s/\s/_/g;
-            $out_filename = $outputDir . "/logs/" . $sampleName . '_macs2.sh';      
+            $out_filename = $outputDir . "/logs/" . $sampleName . '_' . $datestring . '_macs2.sh';      
             print "$out_filename\n";
             #print "$sampleName\n";
             open(FH, '>', $out_filename) or die $!;
