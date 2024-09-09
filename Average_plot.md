@@ -1,9 +1,9 @@
-This document outlines the commands to generate average profile plot and heatmap of CUT&RUN/ChIP-seq signal over genomic regions of interest using deeptools
+This document outlines the commands to generate average profile plot and heatmap of CUT&RUN/ChIP-seq signal over genomic regions of interest using [deeptools](https://deeptools.readthedocs.io/en/develop/content/list_of_tools.html) in UTSW BioHPC. 
 
 first reserve a node in BioHPC
 
 ```
-$ srun --partition=super --nodes=1 --pty --time=5:00:00 /bin/bash
+$ srun --partition=32GB --nodes=1 --pty --time=5:00:00 /bin/bash
 ```
 
 ```
@@ -57,7 +57,6 @@ First download the gtf file for mouse genome
 
 ```
 wget https://ftp.ensembl.org/pub/release-102/gtf/mus_musculus/Mus_musculus.GRCm38.102.gtf.gz
-
 ```
 
 ```
@@ -69,25 +68,28 @@ sed 's/"//' | \
 awk '{ print "chr"$1,$2,$3,$5,$4}' OFS="\t" >Mus_musculus.GRCm38.102.protein_coding_gene.bed
 ```
 
+first generate matrix using computeMatrix (e.g)
 ```
-# read depth normalzed bigwig files
 computeMatrix scale-regions \
--S ../../results/DNMT3A_CNR/bigWig/2wk_S835A_HOM_F_CTX_D3a_vs_Rb_IgG_log2ratio.bw \
-../../results/DNMT3A_CNR/bigWig/2wk_S835A_WT_F_CTX_D3a_vs_Rb_IgG_log2ratio.bw \
--R  ../../results/DEGs_coordinates/All_genes_coordiantes.bed \
+-S 2wk_S835A_HOM_F_CTX_D3a_vs_Rb_IgG.bw \
+2wk_S835A_WT_F_CTX_D3a_vs_Rb_IgG.bw \
+-R  Mus_musculus.GRCm38.102.protein_coding_gene.bed \
 -p "max/2" \
 --regionBodyLength 5000 \
 --binSize 10 \
 -b 5000 -a 5000 \
 --skipZeros \
 -p "max/2" \
--o ../../results/DEGs_coordinates/All_genes_coordiantes.chr1-19.DNMT3a_CNR_DepthNormalized.log2ratio.gz
+-o Mus_musculus.GRCm38.102.protein_coding_gene.gz
+```
 
-plotProfile -m ../../results/DEGs_coordinates/All_genes_coordiantes.chr1-19.DNMT3a_CNR_DepthNormalized.log2ratio.gz \
--out ../../results/DEGs_coordinates/All_genes_coordiantes.chr1-19.DNMT3a_CNR_DepthNormalized.log2ratio.pdf \
---samplesLabel  "2wk S835A HOM CTX DNMT3A /IgG R1" "2wk S835A WT CTX DNMT3A/IgG R1" \
+Generate Average profile
+```
+plotProfile -m Mus_musculus.GRCm38.102.protein_coding_gene.gz \
+-out Mus_musculus.GRCm38.102.protein_coding_gene.pdf \
+--samplesLabel "2wk S835A HOM CTX D3a" "2wk S835A WT CTX D3a" \
 --perGroup \
---yAxisLabel "log2 (DNMT3A/IgG) Coverage" \
+--yAxisLabel "D3a Read Density" \
 --plotTitle ""
 ```
 

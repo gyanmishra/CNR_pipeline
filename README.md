@@ -52,7 +52,7 @@ $ unzip MECP2_project/data/bowtie2_mm10_index/mm10.zip -d MECP2_project/data/bow
 
 **IV. Run the pipeline with following argument as inputs**
 
-Run below command from the CNR_pipeline directory. 
+Run below command to process the raw data. 
 ```
 $ git clone https://github.com/gyanmishra/CNR_pipeline.git
 $ perl CNR_pipeline/process_CNR.pl \
@@ -75,10 +75,10 @@ $ perl CNR_pipeline/process_CNR.pl \
 *Note : The script `process_CNR.pl` can be run from any directory given the full path of `CNR_Pipeline` directory*
 
 **V. Generate Alignment statisitcs in tabular format for all the samples**
-Run below command from the CNR_pipeline directory. 
+Run below command to generate alignment statistics. 
 
 ```
-$ sbatch Generate_Alignment_stats.sh \
+$ sbatch CNR_pipeline/Generate_Alignment_stats.sh \
 <result dir> \ # the path of result directory
 <raw file directory> \ # the path of directory containing raw files
 <sampleSheet.csv> # the path of files with sample Info (e.g sampleSheet.csv)
