@@ -81,8 +81,8 @@ foreach $line (<$file>)
             print FH "#SBATCH --cpus-per-task=32\n";
             print FH "#SBATCH --partition=32GB\n";
             print FH "#SBATCH -t 0-12:0:0\n";
-            print FH "#SBATCH -o $outputDir/logs/$col[0]_$datestring_macs2.out\n";
-            print FH "#SBATCH -e $outputDir/logs/$col[0]_$datestring_macs2.err\n";
+            print FH "#SBATCH -o $outputDir/logs/$col[0]_${datestring}_macs2.out\n";
+            print FH "#SBATCH -e $outputDir/logs/$col[0]_${datestring}_macs2.err\n";
             print FH "#SBATCH --mail-type ALL\n";
             #print FH "#SBATCH --mail-user GyanPrakash.Mishra\@UTSouthwestern.edu\n\n\n";
             print FH "module load macs/2.1.2 bedops/2.4.14 \n\n";
