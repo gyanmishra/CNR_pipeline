@@ -87,8 +87,8 @@ foreach $line (<$file>)
               print FH "#SBATCH -o $outputDir/logs/$col[0].$datestring.out\n";
               print FH "#SBATCH -o $outputDir/logs/$col[0].$datestring.err\n";
               print FH "#SBATCH --mail-type ALL\n";
-              print FH "#SBATCH --mail-user GyanPrakash.Mishra\@UTSouthwestern.edu\n\n\n";
-              print FH "module load fastqc/0.11.8 multiqc/1.7 perl/5.30.1 cutadapt/2.5 bowtie2/2.4.2 samtools/1.6 bedtools/2.29.2 UCSC_userApps/v317 Trimmomatic/0.32 deeptools/3.5.0 \n\n";
+              #print FH "#SBATCH --mail-user GyanPrakash.Mishra\@UTSouthwestern.edu\n\n\n";
+              print FH "module load fastqc/0.11.8 multiqc/1.7 perl/5.30.1 bowtie2/2.4.2 samtools/1.6 bedtools/2.29.2 UCSC_userApps/v317 Trimmomatic/0.32 deeptools/3.5.0 \n\n";
               #print FH "perl /work/OBI/Neuroinformatics_Core/s225347/CUT_and_RUN/scripts/CNR_pipeline.pl /work/OBI/Neuroinformatics_Core/s225347/CUT_and_RUN/data/CUTandRUN_seq_Data.txt\n\n";
               print FH "\n\n";
               print FH "# COMMAND GROUP 1\n\n";         
