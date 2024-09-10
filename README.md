@@ -115,7 +115,7 @@ open below file to to see the alignment statistics
 ### Peak calling (macs2)
 
 **I. Prepare tab separated sampleSheet.tsv**
-The targetID and controlID should be smapleID used in the sampleSheet.csv file.
+The targetID and controlID should be sampleID used in the sampleSheet.csv file.
 ```
 peakCallingID	targetID	controlID
 MECP2_vs_IgG	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729
