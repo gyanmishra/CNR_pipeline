@@ -7,3 +7,4 @@ homer_motif.sh
 mCA_CNR_corr.R
 mCA_CNR_corr_v2.R
 test.R
+readBismarkFiles.R

@@ -106,7 +106,7 @@ foreach $line (<$file>)
               # Trim adapters
               #print FH "cutadapt -a  AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATC -A  AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATC -m 20 -o $projectDir/results/fastq/$col[4]_R1.cutadapt.fastq.gz -p $projectDir/results/fastq/$col[4]_R2.cutadapt.fastq.gz $rawFile/$col[5] $rawFile/$col[6]\n";
               #
-              print FH "java -jar $script_path/\$Trimmomatic PE  \\\n$rawFile/$col[1] \\\n$rawFile/$col[2] \\\n$outputDir/fastq/$sampleName.R1.paired.fastq.gz \\\n$outputDir/fastq/$sampleName.R1.unpaired.fastq.gz \\\n$outputDir/fastq/$sampleName.R2.paired.fastq.gz \\\n$outputDir/fastq/$sampleName.R2.unpaired.fastq.gz \\\nILLUMINACLIP:trimmomatic/adapters/All_TruSeq.fa.fa:2:15:4:4:true LEADING:20 TRAILING:20 SLIDINGWINDOW:4:15 MINLEN:25\n\n";
+              print FH "java -jar \$Trimmomatic PE  \\\n$rawFile/$col[1] \\\n$rawFile/$col[2] \\\n$outputDir/fastq/$sampleName.R1.paired.fastq.gz \\\n$outputDir/fastq/$sampleName.R1.unpaired.fastq.gz \\\n$outputDir/fastq/$sampleName.R2.paired.fastq.gz \\\n$outputDir/fastq/$sampleName.R2.unpaired.fastq.gz \\\nILLUMINACLIP:trimmomatic/adapters/All_TruSeq.fa.fa:2:15:4:4:true LEADING:20 TRAILING:20 SLIDINGWINDOW:4:15 MINLEN:25\n\n";
 
               ## FASTQC 
               print FH "fastqc $outputDir/fastq/$sampleName.R1.paired.fastq.gz \\\n-o $outputDir/fastqc\n\n";
