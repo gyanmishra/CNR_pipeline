@@ -1,8 +1,8 @@
 This pipeline processes paired-end raw CUT&RUN/ChIP sequencing reads from the mouse to generate BAM, bedGraph and bigwig files. After processing the reads, it also includes a script to perform peak calling using macs2.
 
-This pipeline is tested to work in UTSW BioHPC
+This pipeline is tested to work only in UTSW BioHPC.
 \
-This pipeline has 2 major components : 
+This pipeline has 2 major components: 
 
 ## Processing of Raw reads
 

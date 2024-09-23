@@ -137,6 +137,6 @@ foreach $line (<$file>)
               print FH "rm $outputDir/bam/$sampleName.bam\n";
               print FH "rm $outputDir/bam/$sampleName.s.fm.bam\n";
               print FH "rm $outputDir/bam/$sampleName.s.fm.sort.bam\n";
-              #`sbatch $out_filename`;
+              `sbatch $out_filename`;
        }
 }

@@ -2,4 +2,8 @@ Mus_musculus.GRCm38.102.gtf.gz
 Mus_musculus.GRCm38.102.protein_coding_gene.bed
 test
 test_run
-.gitignore 
+.gitignore
+homer_motif.sh
+mCA_CNR_corr.R
+mCA_CNR_corr_v2.R
+test.R
