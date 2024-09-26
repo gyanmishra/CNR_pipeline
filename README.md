@@ -64,7 +64,8 @@ $ perl CNR_pipeline/process_CNR.pl \
 e.g.
 
 ```
-e.g Sequencing Run id is "2024_06_11_N2K226_13907_0"
+e.g if Sequencing Run id is "2024_06_11_N2K226_13907_0"
+
 $ perl CNR_pipeline/process_CNR.pl \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
 /project/OBI/Neuroinformatics_Core/Stroud_lab/shared/D3aCNR_forGyan/ \
@@ -74,7 +75,7 @@ $ perl CNR_pipeline/process_CNR.pl \
 
 *Note : The script `process_CNR.pl` can be run from any directory given the full path of `CNR_Pipeline` directory*
 
-**V. Generate Alignment statistics in tabular format for all the samples**
+**V. Generate Alignment statistics in tabular format for all the samples**\
 *Note: Run the below command from `CNR_pipeline` directory to generate alignment statistics.*
 
 ```
