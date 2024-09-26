@@ -87,7 +87,7 @@ $ sbatch GenerateAlignment_statistics.sh \
 ```
 e.g
 ```
-sbatch CNR_pipeline/GenerateAlignment_statistics.sh \
+sbatch GenerateAlignment_statistics.sh \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
 /project/OBI/Neuroinformatics_Core/Stroud_lab/shared/D3aCNR_forGyan/ \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/sampleSheet.csv 
