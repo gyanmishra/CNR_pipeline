@@ -124,7 +124,7 @@ MECP2_vs_IgG	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP
 ```
 *save the file in `MECP2_project/data/macs2_sampleSheet.tsv`
 
-**II. Run the peak calling script**
+**II. Run the peak calling script**\
 Run the below command from the CNR_pipeline directory. 
 ```
 $ perl CNR_pipeline/macs2_callPeak.pl \
