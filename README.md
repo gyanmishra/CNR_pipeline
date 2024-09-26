@@ -76,7 +76,7 @@ $ perl CNR_pipeline/process_CNR.pl \
 *Note : The script `process_CNR.pl` can be run from any directory given the full path of `CNR_Pipeline` directory*
 
 **V. Generate Alignment statistics in tabular format for all the samples**\
-*Note: Run the below command from `CNR_pipeline` directory only to generate alignment statistics.*
+*Note: Run the below command from `CNR_pipeline` directory only to generate alignment statistics.*\
 see below code
 ```
 $ cd CNR_pipeline
