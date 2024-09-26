@@ -10,5 +10,8 @@
 
 module load samtools/1.6
 
+resultdir=$1
+rawdir=$2
+samplesheet=$3
 
 python GenerateAlignment_statistics.py  -d $resultdir -r $rawdir -s $samplesheet
