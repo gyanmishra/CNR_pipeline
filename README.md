@@ -75,17 +75,18 @@ $ perl CNR_pipeline/process_CNR.pl \
 *Note : The script `process_CNR.pl` can be run from any directory given the full path of `CNR_Pipeline` directory*
 
 **V. Generate Alignment statistics in tabular format for all the samples**
-Run the below command to generate alignment statistics. 
+*Note: Run the below command from `CNR_pipeline` directory to generate alignment statistics.*
 
 ```
-$ sbatch CNR_pipeline/Generate_Alignment_stats.sh \
+$ cd CNR_pipeline
+$ sbatch GenerateAlignment_statistics.sh \
 <result dir> \ # the path of result directory
 <raw file directory> \ # the path of directory containing raw files
 <sampleSheet.csv> # the path of files with sample Info (e.g sampleSheet.csv)
 ```
 e.g
 ```
-sbatch CNR_pipeline/Generate_Alignment_stats.sh \
+sbatch CNR_pipeline/GenerateAlignment_statistics.sh \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
 /project/OBI/Neuroinformatics_Core/Stroud_lab/shared/D3aCNR_forGyan/ \
 /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/sampleSheet.csv 
