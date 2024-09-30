@@ -155,3 +155,11 @@ pvalue \
     - MECP2_vs_IgG_summits_noBlacklist.bed
 
 
+### Motif analysis (HOMER)
+```
+$ sbatch CNR/homer_motif.sh \
+<peak file> \ # peak file 
+<genome> \ # genome (e.g mm10)
+<output directory> # the path of output directory \
+<size of the region from center>  # (e.g -50,50)
+```
