@@ -16,6 +16,7 @@ CNR_target = list.files(path = "/project/OBI/Neuroinformatics_Core/Stroud_lab/sh
 # CNR_target = c("/path1/file.bam","path2/file2.bam")
 
 # Mus musculus GTF file
+# Download the file from ensembl
 gtf = '/work/Neuroinformatics_Core/s225347/Pipeline/CNR_pipeline/Mus_musculus.GRCm38.102.gtf.gz'
 
 ########################################################################################################################
