@@ -17,6 +17,7 @@ CNR_target = list.files(path = "/project/OBI/Neuroinformatics_Core/Stroud_lab/sh
 
 # Mus musculus GTF file
 # Download the file from ensembl
+# https://ftp.ensembl.org/pub/release-102/gtf/mus_musculus/
 gtf = '/work/Neuroinformatics_Core/s225347/Pipeline/CNR_pipeline/Mus_musculus.GRCm38.102.gtf.gz'
 
 ########################################################################################################################
@@ -25,7 +26,7 @@ binSize <- 399
 stepSize <- 40
 
 ########################################################################################################################
-# Function to check to is the required packages is installed or not.
+# Function to check if the required packages is installed or not.
 install_if_missing <- function(pkg) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
     BiocManager::install(pkg)
@@ -42,6 +43,7 @@ packages = c("BiocManager","tidyverse","Rsamtools", "GenomicAlignments",
 # Apply the function to each package
 sapply(packages, install_if_missing)
 
+# Load the required packages
 library(Rsamtools)
 library(GenomicAlignments)
 library(GenomicRanges)
