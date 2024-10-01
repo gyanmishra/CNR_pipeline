@@ -157,7 +157,7 @@ pvalue \
 
 ### Motif analysis (HOMER)
 ```
-$ sbatch CNR_Pipeline/homer_motif.sh \
+$ sbatch CNR_pipeline/homer_motif.sh \
 <peak file> \ # peak file 
 <genome> \ # genome (e.g mm10)
 <output directory> # the path of output directory \
