@@ -127,19 +127,23 @@ MECP2_vs_IgG	240531TC_A1_7wk_MECP2_WT_LR_CTX_H3K27ac_ab4729,240531TC_A1_7wk_MECP
 **II. Run the peak calling script**\
 Run the below command to call peaks. 
 ```
-$ perl CNR_pipeline/macs2_callPeak.pl \
-<result directory> \ # the path of result directory
-<pvalue or qvalue> \ # pvalue - to find peaks with p-value cut-off of 1e-3; qvalue - to find peaks with qvalue cut-off of 0.05
-<macs2_sampleSheet.tsv> # path with name of macs2_sampleSheet.tsv
+perl macs2_callPeak.pl --help
+
+Usage: macs2_callPeak.pl \
+--resultDir <result dir> \ # the path of result directory
+--qvalue \ # use this option to use pvalue
+--pvalue \ # use this option to use qvalue (default)
+--threshold <set pvalue or qvalue threshold> (default : 0.05)
+--sampleSheet <macs2 peak calling sampleSheet>
 ```
 
 e.g
 ```
 $ perl CNR_pipeline/macs2_callPeak.pl \
-/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
-pvalue \
-/work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/macs2_sampleSheet.tsv \
-
+--resultDir /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/results/2024_06_11_N2K226_13907_0/ \
+--pvalue \
+--threshold 0.01 \
+--sampleSheet /work/OBI/Neuroinformatics_Core/s225347/CNR_pipeline/MECP2_project/data/macs2_sampleSheet.tsv
 ```
 *Note : The script `macs2_callPeak.pl` can be run from any directory given the full path of `CNR_Pipeline` directory** <br >
 
