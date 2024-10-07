@@ -129,7 +129,7 @@ Run the below command to call peaks.
 ```
 perl macs2_callPeak.pl --help
 
-Usage: macs2_callPeak.pl \
+Usage: perl macs2_callPeak.pl \
 --resultDir <result dir> \ # the path of result directory
 --qvalue \ # use this option to use pvalue
 --pvalue \ # use this option to use qvalue (default)
