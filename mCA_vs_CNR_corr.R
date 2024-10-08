@@ -3,10 +3,17 @@
 # Prepare input files for 
 
 # methylation data
-mCA_target = "/work/OBI/Neuroinformatics_Core/s225347/DNMT3A_project/data/BSmap/2wk_CTX_Stroud2017_mm10_BSmap_CA.txt.gz"
+mCA_target = "/work/OBI/Neuroinformatics_Core/s225347/Mecp2_project/data/8wk_CTX_Stroud2017_mm10_BSmap_CA.txt.gz"
+
+# methylation data has to be in the below format with six column. 
+# chr1    3000037 -       TTGGA   0       1
+# chr1    3000054 -       TTGAA   0       2
+# chr1    3000062 -       CTGGT   0       2
+# chr1    3000073 -       CTGCA   0       3
+
 
 # CNR bam files (only one sample)
-CNR_target = "/project/OBI/Neuroinformatics_Core/Stroud_lab/shared/Eric_New/For_Gyan/210930_H4_S835A_MECP2.final.sort.bam"
+CNR_target = "/project/OBI/Neuroinformatics_Core/Stroud_lab/shared/Eric_New/For_Gyan/230405_18_WT_MECP2.final.sort.bam"
 
 # multiple CNR samples
 CNR_target = list.files(path = "/project/OBI/Neuroinformatics_Core/Stroud_lab/shared/Eric_New/For_Gyan",
@@ -59,17 +66,24 @@ source(paste0(script_path,"/readBismarkFiles.R"))
 summarize_logFC_mCA = function(x,binSize = 19,stepSize =4){
   df.bin =list()
   for (i in seq(from=1, to=nrow(x), by=stepSize)){
-    print(i)
+    #print(i)
     start = i
     stop  = i+binSize
+    print(paste(start,stop,sep = "_"))
     if(stop <= nrow(x)){
       df = x[start:stop,]
       df.bin[[i]] = df  %>% summarize(cov.mean=mean(.[,1]),cov.mean.sd = sd(.[,1]),mCA.mean=mean(.[,2]))
+      print(df.bin[[i]])
     }
-    else{
-      return(df.bin)
-    }
+    #if (stop > nrow(x)){
+    #  df = x[start:nrow(x),]
+    #  df.bin[[i]] = df  %>% summarize(cov.mean=mean(.[,1]),cov.mean.sd = sd(.[,1]),mCA.mean=mean(.[,2]))
+    #}
+    #else{
+      
+    #}
   }
+  return(df.bin)
 }
 
 # Function to calculate RPKM from bam file
@@ -196,11 +210,11 @@ cor.plot = meth_cnr_merged.avg %>%
   #facet_wrap(~CNR)+
   #ylim(0,1.5)+
   #coord_cartesian(ylim = c(0, 1.5))+
-  geom_ribbon(aes(x=mCA.mean,y=cov.mean,
-                  ymin=cov.mean-cov.mean.sd,
-                  ymax=cov.mean+cov.mean.sd,fill=CNR),
-              alpha=0.1,color='NA') +
-  #scale_fill_manual(name = "MECP2 CNR",
+  #geom_ribbon(aes(x=mCA.mean,y=cov.mean,
+  #                ymin=cov.mean-cov.mean.sd,
+  #                ymax=cov.mean+cov.mean.sd,fill=CNR),
+  #            alpha=0.1,color='NA') +
+  ##scale_fill_manual(name = "MECP2 CNR",
   #                  values = c('red','black'),
   #                  aesthetics = c("colour", "fill"),
   #                  labels=c('S835A','WT'))+
