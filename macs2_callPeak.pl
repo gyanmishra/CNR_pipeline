@@ -76,7 +76,7 @@ foreach $line (<$file>)
                 if (-e $targets[$i]) {
                     print "$targets[$i] exists!\n";
                 } else {
-                    die "$targets[$i] does not exist!\nPlease make sure the correct result folder path has been used\n";
+                    #die "$targets[$i] does not exist!\nPlease make sure the correct result folder path has been used\n";
                 }
 
             }
@@ -85,7 +85,7 @@ foreach $line (<$file>)
                 if (-e $controls[$i]) {
                     print "$controls[$i] exists!\n";
                 } else {
-                    die "$controls[$i] does not exist!\nPlease make sure the correct result folder path has been used\n";
+                    #die "$controls[$i] does not exist!\nPlease make sure the correct result folder path has been used\n";
                 }
             }
 
@@ -123,17 +123,19 @@ foreach $line (<$file>)
             # Merge samples fa          
             if($stats eq 'pvalue'){
                 print FH "macs2 callpeak \\\n-t @targets \\\n-c @controls \\\n-f BAMPE \\\n-g mm \\\n-p $threshold \\\n--outdir $outputDir/macs2_callPeak/$sampleName \\\n--call-summits \\\n-n $sampleName\n\n";
-                print FH "#remove blacklisted region\n";
-                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed\n\n";
-                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_summits.bed \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_summits_noBlacklist.bed\n";
+                #print FH "#remove blacklisted region\n";
+                #print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed\n\n";
+                #print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_summits.bed \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_summits_noBlacklist.bed\n";
             }
 
             if($stats eq 'qvalue'){
                 print FH "macs2 callpeak \\\n-t @targets \\\n-c @controls \\\n-f BAMPE \\\n-g mm \\\n-q $threshold \\\n--outdir $outputDir/macs2_callPeak/$sampleName \\\n--call-summits \\\n-n $sampleName\n\n";
-                print FH "#remove blacklisted region\n";
-                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed\n\n";
-                print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_summits.bed \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_summits_noBlacklist.bed\n";
-            }
+            }    
+            
+            print FH "#remove blacklisted region\n";
+            print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed\n\n";
+            print FH "bedops -n 1 $outputDir/macs2_callPeak/$sampleName/${sampleName}_summits.bed \\\n$script_path/mm10/mm10.blacklist.bed >$outputDir/macs2_callPeak/$sampleName/${sampleName}_summits_noBlacklist.bed\n\n";
+            print FH "cut -f 1,2,3 $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist.bed | sort-bed - | bedops -m - > $outputDir/macs2_callPeak/$sampleName/${sampleName}_peaks.narrowPeak.noBlacklist_NR.bed";
             `sbatch $out_filename`;  
     }
 }

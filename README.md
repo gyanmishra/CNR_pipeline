@@ -152,11 +152,12 @@ $ perl CNR_pipeline/macs2_callPeak.pl \
 1. `MECP2_project/results/2024_06_11_N2K226_13907_0/macs2_callPeak/MECP2_vs_IgG/` \
     This folder will be created after running `macs2_callPeak.pl` and it will contain following files. 
     - MECP2_vs_IgG_model.r
-    - MECP2_vs_IgG_peaks.narrowPeak
+    - MECP2_vs_IgG_peaks.narrowPeak # Original peak files
     - MECP2_vs_IgG_peaks.xls
-    - MECP2_vs_IgG_summits.bed
-    - MECP2_vs_Igg_peaks.narrowPeak.noBlacklist.bed
+    - MECP2_vs_IgG_summits.bed # Original peak summit files
+    - MECP2_vs_Igg_peaks.narrowPeak.noBlacklist.bed # Blacklisted regions removed peak files
     - MECP2_vs_IgG_summits_noBlacklist.bed
+    - MECP2_vs_IgG_peaks.narrowPeak.noBlacklist_NR.bed # The bed file containing non redundant chr coordinates of peaks. 
 
 
 ### Motif analysis (HOMER)
