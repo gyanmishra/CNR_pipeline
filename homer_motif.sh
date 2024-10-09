@@ -8,12 +8,13 @@
 #SBATCH -e HOMER_motif.err
 #SBATCH --mail-type ALL
 
-module load homer/4.10.4
+module load homer/4.9
 
 peakfile=$1
 genome=$2
 output=$3
 size=$4
+tmp_dir=$5
 
-findMotifsGenome.pl $peakfile $genome $output $size
+findMotifsGenome.pl $peakfile $genome $output -size $size -preparsedDir $tmp_dir
 

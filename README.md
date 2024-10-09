@@ -166,4 +166,5 @@ $ sbatch CNR_pipeline/homer_motif.sh \
 <genome> \ # genome (e.g mm10)
 <output directory> # the path of output directory \
 <size of the region from center>  # (e.g -50,50)
+<directory to keep temporary files>
 ```
